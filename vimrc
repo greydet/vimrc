@@ -49,8 +49,6 @@ set number              " Show line number
 set laststatus=2        " Always show file status bar
 set showcmd             " Display some information about selections in visual mode
 set mouse=a             " Enable mouse actions
-" Update comments color to make them more readable
-hi Comment ctermfg=blue
 
 "
 " Search configuration
