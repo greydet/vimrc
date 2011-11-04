@@ -86,9 +86,17 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
+" 
+" Special behaviours
 "
+
 " Call user specific vimrc file if it exists
-"
 if filereadable(customVimrcFilePath)
     exe "source ".customVimrcFilePath
+endif
+
+" Reload vimrc files when modified
+if !exists("autoReloadRC")
+    let autoReloadRC=1
+    autocmd BufWritePost *vimrc* tabdo windo source $HOME/.vimrc
 endif
