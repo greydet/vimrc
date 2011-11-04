@@ -15,9 +15,15 @@
 "
 
 "
+" Global variables
+"
+" Path to an optional vimrc file to add custom or system dependant properties
+let customVimrcFilePath= expand("$HOME/.vimrc.custom")
+
+"
 " Misc configuration
 "
-set noswapfile
+set noswapfile          " Do not create any swap file for openned files
 
 "
 " Buffer configuration
@@ -80,3 +86,9 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
+"
+" Call user specific vimrc file if it exists
+"
+if filereadable(customVimrcFilePath)
+    exe "source ".customVimrcFilePath
+endif
