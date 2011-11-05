@@ -10,5 +10,5 @@ Install
 
 Configuration customization
 ===========================
-As some configuration can be very user or system dependant, users can put a `.vimrc.custom` file at the root of their home directory to add its specific configurations. This file will be automatically sourced by this vimrc script.
+As some configurations can be very user or system dependant, users can put a `.vimrc.custom` file at the root of their home directory to add their specific vim customizations. This file will be automatically sourced by this vimrc script.
 
