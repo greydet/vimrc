@@ -17,23 +17,27 @@
 "
 " Global variables
 "
+
 " Path to an optional vimrc file to add custom or system dependant properties
 let customVimrcFilePath= expand("$HOME/.vimrc.custom")
 
 "
 " Misc configuration
 "
+
 set noswapfile          " Do not create any swap file for openned files
 
 "
 " Buffer configuration
 "
+
 set hidden              " Put buffers to background instead of closing it
 set switchbuf=useopen
 
 "
 " Indentation configuration
 "
+
 set tabstop=4           " Tabs are 4 spaces long
 set softtabstop=4       " Delete up to 4 spaces on backspace
 set shiftwidth=4        " Auto-indent is 4 spaces
@@ -49,16 +53,26 @@ imap <S-Tab> <C-d>
 "
 " Display configuration
 "
+
 set number              " Show line number
 "set nowrap              " Disable line wrapping
 "set list                " Show invisible characters
 set laststatus=2        " Always show file status bar
 set showcmd             " Display some information about selections in visual mode
 set mouse=a             " Enable mouse actions
+" Remap scroll down and page down so they does not fill the screen with non-existant file lines
+map <ScrollWheelDown> }
+map <PageDown> }
+imap <ScrollWheelDown> <C-o>}
+imap <PageDown> <C-o>}
+" Remap scroll up and page up so cursor can be moved to the top of file
+map <ScrollWheelUp> {
+map <PageUp> {
 
 "
 " Search configuration
 "
+
 set ignorecase          " Make search case-insensitive
 set smartcase           " With ignorecase set, search is case-insensitive unless an upper case is present in the search pattern
 set hlsearch            " Highlight search
@@ -71,6 +85,7 @@ vnoremap / /\v
 "
 " Autocompletion
 "
+
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
