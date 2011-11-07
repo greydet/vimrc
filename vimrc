@@ -25,6 +25,11 @@ let customVimrcFilePath= expand("$HOME/.vimrc.custom")
 " Misc configuration
 "
 
+" Add internal vim script folder in vim runtimepath
+" For this to work the repository must have been cloned in a vimrc folder in the user home directory
+if filereadable(expand("$HOME/vimrc/vimrc"))
+    let &runtimepath.=','.expand("$HOME/vimrc/vim")
+endif
 set noswapfile          " Do not create any swap file for openned files
 
 "
