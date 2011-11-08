@@ -86,6 +86,8 @@ set scrolloff=4         " Keep lines at top and bottom of the screen when naviga
 " Make search use more common regex special characters and escape sequences
 nnoremap / /\v
 vnoremap / /\v
+" Disable current search by typing the Carriage Return key
+nnoremap <cr> :noh<return><cr>
 
 "
 " Autocompletion
