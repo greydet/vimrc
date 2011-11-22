@@ -28,7 +28,7 @@ let customVimrcFilePath= expand("$HOME/.vimrc.custom")
 " Add internal vim script folder in vim runtimepath
 " For this to work the repository must have been cloned in a vimrc folder in the user home directory
 if filereadable(expand("$HOME/vimrc/vimrc"))
-    let &runtimepath.=','.expand("$HOME/vimrc/vim")
+    let &runtimepath=&runtimepath.','.expand("$HOME/vimrc/vim")
 endif
 set noswapfile          " Do not create any swap file for openned files
 
@@ -66,13 +66,13 @@ set laststatus=2        " Always show file status bar
 set showcmd             " Display some information about selections in visual mode
 set mouse=a             " Enable mouse actions
 " Remap scroll down and page down so they does not fill the screen with non-existant file lines
-map <ScrollWheelDown> }
-map <PageDown> }
-imap <ScrollWheelDown> <C-o>}
-imap <PageDown> <C-o>}
+"map <ScrollWheelDown> }
+"map <PageDown> }
+"imap <ScrollWheelDown> <C-o>}
+"imap <PageDown> <C-o>}
 " Remap scroll up and page up so cursor can be moved to the top of file
-map <ScrollWheelUp> {
-map <PageUp> {
+"map <ScrollWheelUp> {
+"map <PageUp> {
 
 "
 " Search configuration
