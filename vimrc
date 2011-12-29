@@ -37,7 +37,21 @@ set noswapfile          " Do not create any swap file for openned files
 "
 
 set hidden              " Put buffers to background instead of closing it
-set switchbuf=useopen
+set switchbuf=useopen   " If a buffer is already opened in another window, switch to this window
+" Press F5 to switch on another buffer
+nnoremap <F5> :buffers<CR>:buffer<Space>
+" Press Shift+F5 to open a new window on another buffer
+nnoremap <S-F5> :buffers<CR>:sbuffer<Space>
+" Press Ctrl+Shift+F5 to hide the current window
+nnoremap <C-S-F5> :hide<CR>
+" Press F12 to switch on the next buffer
+nnoremap <F12> :bnext<CR>
+" Press <S-F12> to switch on the previous buffer
+nnoremap <S-F12> :bprevious<CR>
+" Press <C-F12> to open a new window on the next buffer
+nnoremap <C-F12> :sbnext<CR>
+" Press <C-S-F12> to open a new window on the previous buffer
+nnoremap <C-S-F12> :sbprevious<CR>
 
 "
 " Indentation configuration
