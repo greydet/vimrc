@@ -80,7 +80,7 @@ set laststatus=2        " Always show file status bar
 set showcmd             " Display some information about selections in visual mode
 set mouse=a             " Enable mouse actions
 " Remap scroll down and page down so they does not fill the screen with non-existant file lines
-"map <ScrollWheelDown> }
+"map <ScrollWheelDown> n}
 "map <PageDown> }
 "imap <ScrollWheelDown> <C-o>}
 "imap <PageDown> <C-o>}
@@ -102,6 +102,8 @@ nnoremap / /\v
 vnoremap / /\v
 " Disable current search by typing the Carriage Return key
 nnoremap <cr> :noh<return><cr>
+" Press <F7> to turn on/off spell checking 
+nnoremap <F7> :setlocal spell! spelllang=en_us<cr>
 
 "
 " Autocompletion
