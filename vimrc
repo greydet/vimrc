@@ -78,7 +78,9 @@ set number              " Show line number
 "set list                " Show invisible characters
 set laststatus=2        " Always show file status bar
 set showcmd             " Display some information about selections in visual mode
-set mouse=a             " Enable mouse actions
+if has('mouse')
+    set mouse=a         " Enable mouse actions
+endif
 " Remap scroll down and page down so they does not fill the screen with non-existant file lines
 "map <ScrollWheelDown> n}
 "map <PageDown> }
