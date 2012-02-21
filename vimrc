@@ -106,6 +106,7 @@ vnoremap / /\v
 nnoremap <cr> :noh<return><cr>
 " Press <F7> to turn on/off spell checking 
 nnoremap <F7> :setlocal spell! spelllang=en_us<cr>
+inoremap <F7> <c-o>:setlocal spell! spelllang=en_us<cr>
 
 "
 " Autocompletion
