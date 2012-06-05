@@ -68,6 +68,8 @@ vnoremap > >gv
 vnoremap < <gv
 " Unindent using shift-tab in insert mode
 imap <S-Tab> <C-d>
+" Format file content
+nmap <C-f> gg=G
 
 "
 " Display configuration
