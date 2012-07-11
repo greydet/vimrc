@@ -70,6 +70,7 @@ vnoremap < <gv
 imap <S-Tab> <C-d>
 " Format file content
 nmap <C-f> gg=G
+autocmd FileType make setlocal noexpandtab " Do not replace tabs by spaces for Makefiles
 
 "
 " Display configuration
