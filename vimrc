@@ -70,7 +70,6 @@ vnoremap < <gv
 imap <S-Tab> <C-d>
 " Format file content
 nmap <C-f> gg=G
-autocmd FileType make setlocal noexpandtab " Do not replace tabs by spaces for Makefiles
 
 "
 " Display configuration
@@ -114,6 +113,8 @@ inoremap <F7> <c-o>:setlocal spell! spelllang=en_us<cr>
 "
 " Autocompletion
 "
+autocmd FileType make setlocal noexpandtab          " Do not replace tabs by spaces for Makefiles
+au BufNewFile,BufRead make.*			setf make   " Association make.* file to the make filetype
 
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -129,6 +130,10 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+
+"
+" Filetype specific configuration
+"
 
 " 
 " Special behaviours
