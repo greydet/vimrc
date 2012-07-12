@@ -18,8 +18,10 @@
 " Global variables
 "
 
+" Current installation directory
+let installPath = expand("$HOME/vimrc/")
 " Path to an optional vimrc file to add custom or system dependant properties
-let customVimrcFilePath= expand("$HOME/.vimrc.custom")
+let customVimrcFilePath = expand("$HOME/.vimrc.custom")
 
 "
 " Misc configuration
@@ -27,9 +29,10 @@ let customVimrcFilePath= expand("$HOME/.vimrc.custom")
 
 " Add internal vim script folder in vim runtimepath
 " For this to work the repository must have been cloned in a vimrc folder in the user home directory
-if filereadable(expand("$HOME/vimrc/vimrc"))
-    let &runtimepath=&runtimepath.','.expand("$HOME/vimrc/vim")
+if filereadable(installPath."vimrc")
+    let &runtimepath = &runtimepath . ',' . installPath . "vim/"
 endif
+
 set noswapfile          " Do not create any swap file for openned files
 
 "
@@ -130,6 +133,24 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+
+"
+" Plugin configuration
+"
+
+" Start pathogen plug-in to handle plug-ins stored in installPath/bundle repository
+if filereadable(installPath . "bundle/vim-pathogen/autoload/pathogen.vim")
+    exe "source " . installPath . "bundle/vim-pathogen/autoload/pathogen.vim"
+    call pathogen#infect(installPath . "bundle")
+endif
+
+let Tlist_Close_On_Select = 1           " Close the taglist window when a tag is selected
+let Tlist_Display_Prototype = 1         " Display tag prototype instead of name only
+let Tlist_GainFocus_On_ToggleOpen = 1   " Set focus to the taglist window when opening through the toggle command
+let Tlist_Use_SingleClick = 1           " Jump to a tag with a single click instead of double click
+" Press <F8> to toggle the taglist window
+nnoremap <silent> <F8> :TlistToggle<CR>
+
 
 "
 " Filetype specific configuration

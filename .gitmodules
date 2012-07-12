@@ -1,0 +1,6 @@
+[submodule "bundle/vim-pathogen"]
+	path = bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+    url = https://github.com/klen/vim-taglist-plus.git
