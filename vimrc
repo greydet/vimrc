@@ -116,8 +116,19 @@ nnoremap <F7> :setlocal spell! spelllang=en_us<cr>
 inoremap <F7> <c-o>:setlocal spell! spelllang=en_us<cr>
 
 "
-" Autocompletion
+" Plugin configuration
 "
+
+" Start pathogen plug-in to handle plug-ins stored in installPath/bundle repository
+if filereadable(installPath . "bundle/vim-pathogen/autoload/pathogen.vim")
+    exe "source " . installPath . "bundle/vim-pathogen/autoload/pathogen.vim"
+    call pathogen#infect(installPath . "bundle")
+endif
+
+"
+" Navigation & Autocompletion
+"
+set tags=./tags;/                       " Search for tags in the current working directory then recursively to the root
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
@@ -132,17 +143,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
-set tags=./tags;/                       " Search for tags in the current working directory then recursively to the root
-
-"
-" Plugin configuration
-"
-
-" Start pathogen plug-in to handle plug-ins stored in installPath/bundle repository
-if filereadable(installPath . "bundle/vim-pathogen/autoload/pathogen.vim")
-    exe "source " . installPath . "bundle/vim-pathogen/autoload/pathogen.vim"
-    call pathogen#infect(installPath . "bundle")
-endif
 
 let Tlist_Close_On_Select = 1           " Close the taglist window when a tag is selected
 let Tlist_Display_Prototype = 1         " Display tag prototype instead of name only
@@ -150,7 +150,10 @@ let Tlist_GainFocus_On_ToggleOpen = 1   " Set focus to the taglist window when o
 let Tlist_Use_SingleClick = 1           " Jump to a tag with a single click instead of double click
 " Press <F8> to toggle the taglist window
 nnoremap <silent> <F8> :TlistToggle<CR>
-
+" Press <F3> to open a symbol declaration
+nnoremap <F3> <C-]>
+" Press <S-F3> to go back to the inital symbol
+nnoremap <S-F3> <C-T>
 
 "
 " Filetype specific configuration
