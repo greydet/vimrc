@@ -116,9 +116,6 @@ inoremap <F7> <c-o>:setlocal spell! spelllang=en_us<cr>
 "
 " Autocompletion
 "
-autocmd FileType make setlocal noexpandtab          " Do not replace tabs by spaces for Makefiles
-au BufNewFile,BufRead make.*			setf make   " Association make.* file to the make filetype
-
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
@@ -133,6 +130,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+set tags=./tags;/                       " Search for tags in the current working directory then recursively to the root
 
 "
 " Plugin configuration
@@ -155,6 +153,9 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 "
 " Filetype specific configuration
 "
+autocmd FileType make setlocal noexpandtab          " Do not replace tabs by spaces for Makefiles
+au BufNewFile,BufRead make.*			setf make   " Association make.* file to the make filetype
+
 
 " 
 " Special behaviours
