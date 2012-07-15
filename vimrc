@@ -33,7 +33,9 @@ if filereadable(installPath."vimrc")
     let &runtimepath = &runtimepath . ',' . installPath . "vim/"
 endif
 
-set noswapfile          " Do not create any swap file for openned files
+set noswapfile                  " Do not create any swap file for openned files
+set wildmode=longest,list,full  " Configure wildmenu to behave as follow: complete the common part on first tab hit, list all candidates on second tab hit and iterate over them on next tab hits
+set wildmenu                    " Enable wildmenu. Allow readline like completion when trying to edit new file
 
 "
 " Buffer configuration
