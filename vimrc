@@ -128,6 +128,9 @@ endif
 "
 " Navigation & Autocompletion
 "
+" For the following configs to work a tags file should have been generated with the ctags external tool:
+" ctags -R --c++-kinds=+p --fields=+iaS --extra=+qf [source files]
+"
 set tags=./tags;/                       " Search for tags in the current working directory then recursively to the root
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -154,6 +157,17 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <F3> <C-]>
 " Press <S-F3> to go back to the inital symbol
 nnoremap <S-F3> <C-T>
+
+function! SwitchSourceHeader()
+    if (expand("%:e") =~ "c.*")
+        exe "tag /" . expand("%:t:r") . ".h.*"
+    else
+        exe "tag /" . expand("%:t:r") . ".c.*"
+    endif
+endfunction
+
+" Press <C-h> to switch from header to source file and vice-versa
+nnoremap <C-h> :call SwitchSourceHeader()<CR>
 
 "
 " Filetype specific configuration
