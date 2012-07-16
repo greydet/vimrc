@@ -131,6 +131,7 @@ endif
 " For the following configs to work a tags file should have been generated with the ctags external tool:
 " ctags -R --c++-kinds=+p --fields=+iaS --extra=+qf [source files]
 "
+set completeopt=menuone,preview,longest
 set tags=./tags;/                       " Search for tags in the current working directory then recursively to the root
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
