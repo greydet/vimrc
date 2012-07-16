@@ -160,9 +160,9 @@ nnoremap <S-F3> <C-T>
 
 function! SwitchSourceHeader()
     if (expand("%:e") =~ "c.*")
-        exe "tag /" . expand("%:t:r") . "\\.h.*"
+        exe "tag /^" . expand("%:t:r") . "\\.h.*"
     else
-        exe "tag /" . expand("%:t:r") . "\\.c.*"
+        exe "tag /^" . expand("%:t:r") . "\\.c.*"
     endif
 endfunction
 
