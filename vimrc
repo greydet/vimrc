@@ -75,6 +75,7 @@ vnoremap < <gv
 imap <S-Tab> <C-d>
 " Format file content
 nmap <C-f> gg=G
+set formatoptions+=ro   " Automatically continue comment blocks on new line
 
 "
 " Display configuration
