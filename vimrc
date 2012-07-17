@@ -160,6 +160,13 @@ nnoremap <F3> <C-]>
 " Press <S-F3> to go back to the inital symbol
 nnoremap <S-F3> <C-T>
 
+"
+" Filetype specific configuration
+"
+autocmd FileType make setlocal noexpandtab          " Do not replace tabs by spaces for Makefiles
+au BufNewFile,BufRead make.*			setf make   " Association make.* file to the make filetype
+
+" Function to switch from *.c* file to the corresponding *.h* file and vice-versa
 function! SwitchSourceHeader()
     if (expand("%:e") =~ "c.*")
         exe "tag /^" . expand("%:t:r") . "\\.h.*"
@@ -169,13 +176,8 @@ function! SwitchSourceHeader()
 endfunction
 
 " Press <C-h> to switch from header to source file and vice-versa
-nnoremap <C-h> :call SwitchSourceHeader()<CR>
+autocmd FileType c,cpp nnoremap <buffer> <C-h> :call SwitchSourceHeader()<CR>
 
-"
-" Filetype specific configuration
-"
-autocmd FileType make setlocal noexpandtab          " Do not replace tabs by spaces for Makefiles
-au BufNewFile,BufRead make.*			setf make   " Association make.* file to the make filetype
 
 
 " 
