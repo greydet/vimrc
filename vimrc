@@ -165,7 +165,7 @@ nnoremap <S-F3> <C-T>
 " Filetype specific configuration
 "
 autocmd FileType make setlocal noexpandtab          " Do not replace tabs by spaces for Makefiles
-au BufNewFile,BufRead make.*			setf make   " Association make.* file to the make filetype
+au BufNewFile,BufRead make.*			setf make   " Associate make.* file to the make filetype
 
 " Function to switch from *.c* file to the corresponding *.h* file and vice-versa
 function! SwitchSourceHeader()
@@ -179,7 +179,7 @@ endfunction
 " Press <C-h> to switch from header to source file and vice-versa
 autocmd FileType c,cpp nnoremap <buffer> <C-h> :call SwitchSourceHeader()<CR>
 
-
+au BufNewFile,BufRead *.dox setf cpp.doxygen        " Associate *.dox files to the cpp.doxygen filetype
 
 " 
 " Special behaviours
