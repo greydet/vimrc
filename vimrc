@@ -133,7 +133,7 @@ endif
 " For the following configs to work a tags file should have been generated with the ctags external tool:
 " ctags -R --c++-kinds=+p --fields=+iaS --extra=+qf [source files]
 "
-set completeopt=menuone,preview,longest
+set completeopt=menuone,longest         " Display complete menu even if only one match available & insert the longest common part of matches
 set tags=./tags;/                       " Search for tags in the current working directory then recursively to the root
 " Update selected menu item colors to make it visible (on some version background and foreground colors are the same)
 highlight PmenuSel ctermfg=5 guifg=Magenta
