@@ -135,6 +135,8 @@ endif
 "
 set completeopt=menuone,preview,longest
 set tags=./tags;/                       " Search for tags in the current working directory then recursively to the root
+" Update selected menu item colors to make it visible (on some version background and foreground colors are the same)
+highlight PmenuSel ctermfg=5 guifg=Magenta
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
