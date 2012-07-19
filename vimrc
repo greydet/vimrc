@@ -138,11 +138,25 @@ set tags=./tags;/                       " Search for tags in the current working
 " Update selected menu item colors to make it visible (on some version background and foreground colors are the same)
 highlight PmenuSel ctermfg=5 guifg=Magenta
 " Autocompletion on Ctrl+Space with omnifunc or keyword if omnifunc not available
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-\ "\<lt>C-n>" :
-\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+" If popup menu is already visible
+" then close it & remove inserted element (<C-y>)
+" otherwise
+"   If omnifunc is not set,
+"   then use keyword completion (<C-n>),
+"   Otherwise open omnifunc menu (<C-x><C-o>)
+"     if the popup menu is visible
+"     then do nothing
+"     otherwise use keyword completion (insert space then backspace it to disable the omnifunc error message, then <C-n>)
+"
+inoremap <expr> <C-Space> pumvisible()
+\ ? '<C-y>'
+\ : &omnifunc == ""
+\   ? '<C-n>'
+\   : '<C-x><C-o><c-r>=pumvisible()' .
+\     '? ""' .
+\     ': " \<lt>bs>\<lt>C-n>"' .
+\     '<CR>'
+" Terminal applications interpret CTRL+Space combo to a <C-@> so we map <C-@> to be <C-Space> as a workaround
 imap <C-@> <C-Space>
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
