@@ -172,8 +172,9 @@ let Tlist_GainFocus_On_ToggleOpen = 1   " Set focus to the taglist window when o
 let Tlist_Use_SingleClick = 1           " Jump to a tag with a single click instead of double click
 " Press <F8> to toggle the taglist window
 nnoremap <silent> <F8> :TlistToggle<CR>
-" Press <F3> to open a symbol declaration
+" Press <F3> to open the current symbol's declaration
 nnoremap <F3> <C-]>
+vnoremap <F3> <C-]>
 " Press <S-F3> to go back to the inital symbol
 nnoremap <S-F3> <C-T>
 
