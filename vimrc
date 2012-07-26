@@ -172,12 +172,14 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-let Tlist_Close_On_Select = 1           " Close the taglist window when a tag is selected
-let Tlist_Display_Prototype = 0         " Display tag prototype instead of name only
-let Tlist_GainFocus_On_ToggleOpen = 1   " Set focus to the taglist window when opening through the toggle command
-let Tlist_Use_SingleClick = 1           " Jump to a tag with a single click instead of double click
-" Press <F8> to toggle the taglist window
-nnoremap <silent> <F8> :TlistToggle<CR>
+" Tagbar plugin configurations
+let g:tagbar_autofocus = 1              " Set focus to the tagbar window when opening
+let g:tagbar_compact = 1                " Make tagbar window compact display
+let g:tagbar_singleclick = 1            " Jump to a tag with a single click instead of double click
+let g:tagbar_autoshowtag = 1            " Highlight current selected tag in the tagbar window
+" Press <F8> to toggle the tagbar window
+nnoremap <silent> <F8> :TagbarToggle<CR>
+
 " Press <F3> to open the current symbol's declaration
 nnoremap <F3> <C-]>
 vnoremap <F3> <C-]>
