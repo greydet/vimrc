@@ -167,7 +167,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 let Tlist_Close_On_Select = 1           " Close the taglist window when a tag is selected
-let Tlist_Display_Prototype = 1         " Display tag prototype instead of name only
+let Tlist_Display_Prototype = 0         " Display tag prototype instead of name only
 let Tlist_GainFocus_On_ToggleOpen = 1   " Set focus to the taglist window when opening through the toggle command
 let Tlist_Use_SingleClick = 1           " Jump to a tag with a single click instead of double click
 " Press <F8> to toggle the taglist window
