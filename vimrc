@@ -175,8 +175,6 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " Press <F3> to open the current symbol's declaration
 nnoremap <F3> <C-]>
 vnoremap <F3> <C-]>
-" Press <S-F3> to go back to the inital symbol
-nnoremap <S-F3> <C-T>
 
 if has('cscope')
     set cscopetag       " Use :cstag first instead of :tag
