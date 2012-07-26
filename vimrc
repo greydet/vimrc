@@ -178,6 +178,23 @@ vnoremap <F3> <C-]>
 " Press <S-F3> to go back to the inital symbol
 nnoremap <S-F3> <C-T>
 
+if has('cscope')
+    set cscopetag       " Use :cstag first instead of :tag
+
+"    if has('quickfix')
+"        set cscopequickfix=s-,c-,d-,i-,t-,e-
+"    endif
+
+    let findCscopeResult = system(installPath . 'binsh/findUp.sh . -name cscope.out')
+    for cscopeFile in split(findCscopeResult)
+        let lastPathSep = strridx(cscopeFile, "/")
+        let prePath = strpart(cscopeFile, 0, lastPathSep + 1)
+        exe 'silent! cscope add ' . cscopeFile . ' ' . prePath
+    endfor
+
+    nmap <C-S-g> :cscope find c <C-R>=expand("<cword>")<CR><CR>
+endif
+
 "
 " Filetype specific configuration
 "
