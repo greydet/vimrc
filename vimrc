@@ -38,6 +38,12 @@ set wildmode=longest,list,full  " Configure wildmenu to behave as follow: comple
 set wildmenu                    " Enable wildmenu. Allow readline like completion when trying to edit new file
 filetype plugin on              " Load specific filetype plugin configuration
 
+" Return to last edit position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
 "
 " Buffer configuration
 "
