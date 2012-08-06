@@ -19,7 +19,7 @@
 "
 
 " Current installation directory
-let installPath = expand("$HOME/vimrc/")
+let g:installPath = expand("$HOME/vimrc/")
 " Path to an optional vimrc file to add custom or system dependant properties
 let customVimrcFilePath = expand("$HOME/.vimrc.custom")
 
@@ -184,6 +184,15 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 nnoremap <F3> <C-]>
 vnoremap <F3> <C-]>
 
+function! FindUp(path, pattern)
+    return split(system(g:installPath . 'binsh/findUp.sh ' . a:path . ' -name ' . a:pattern))
+endfunction
+
+function! StripFileName(path)
+    let l:lastPathSep = strridx(a:path, "/")
+    return strpart(a:path, 0, l:lastPathSep + 1)
+endfunction
+
 if has('cscope')
     set cscopetag       " Use :cstag first instead of :tag
 
@@ -191,15 +200,33 @@ if has('cscope')
 "        set cscopequickfix=s-,c-,d-,i-,t-,e-
 "    endif
 
-    let findCscopeResult = system(installPath . 'binsh/findUp.sh . -name cscope.out')
-    for cscopeFile in split(findCscopeResult)
-        let lastPathSep = strridx(cscopeFile, "/")
-        let prePath = strpart(cscopeFile, 0, lastPathSep + 1)
-        exe 'silent! cscope add ' . cscopeFile . ' ' . prePath
+"    let findCscopeResult = system(installPath . 'binsh/findUp.sh . -name cscope.out')
+    for cscopeFile in FindUp('.', 'cscope.out')
+        exe 'silent! cscope add ' . cscopeFile . ' ' . StripFileName(cscopeFile)
     endfor
 
     nmap <C-S-g> :cscope find c <C-R>=expand("<cword>")<CR><CR>
 endif
+
+let g:syntastic_check_on_open=1         " Syntastic check on open and saving
+let g:syntastic_auto_loc_list=1         " Automatically open the error window
+
+" Construct the include dir by searching for h file from the project root
+" List of file name candidates used to find the project root
+let g:prjRootElts = ['.git', '.project']
+for candidate in g:prjRootElts
+    let foundCandidates = FindUp('.', candidate)
+    if len(foundCandidates) > 0
+        let rootCandidate = StripFileName(foundCandidates[-1])
+        let hFiles = system('find ' . rootCandidate . ' -name *.h')
+        if (hFiles != "")
+            let hDirs = system("sed 's#\\(.*\\)/.*#\\1#'", hFiles)
+            let hDirs = system("sort -u", hDirs)
+            let g:syntastic_c_include_dirs = split(hDirs)
+        endif
+        break
+    endif
+endfor
 
 "
 " Filetype specific configuration
