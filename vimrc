@@ -218,12 +218,8 @@ for candidate in g:prjRootElts
     let foundCandidates = FindUp('.', candidate)
     if len(foundCandidates) > 0
         let rootCandidate = StripFileName(foundCandidates[-1])
-        let hFiles = system('find ' . rootCandidate . ' -name *.h')
-        if (hFiles != "")
-            let hDirs = system("sed 's#\\(.*\\)/.*#\\1#'", hFiles)
-            let hDirs = system("sort -u", hDirs)
-            let g:syntastic_c_include_dirs = split(hDirs)
-        endif
+        let hDirs = system(g:installPath . 'binsh/findParentDir.sh ' . rootCandidate . ' -name *.h')
+        let g:syntastic_c_include_dirs = split(hDirs)
         break
     endif
 endfor
