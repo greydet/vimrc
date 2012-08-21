@@ -14,6 +14,13 @@
 " limitations under the License.
 "
 
+if v:version < 700
+    echohl WarningMsg
+    echomsg 'Vim version is too old: ' . v:version . '. This vimrc configuration file requires at least 7.0'
+    echohl None
+    finish
+endif
+
 "
 " Global variables
 "
@@ -130,7 +137,18 @@ inoremap <F7> <c-o>:setlocal spell! spelllang=en_us<cr>
 " Start pathogen plug-in to handle plug-ins stored in installPath/bundle repository
 if filereadable(installPath . "bundle/vim-pathogen/autoload/pathogen.vim")
     exe "source " . installPath . "bundle/vim-pathogen/autoload/pathogen.vim"
-    call pathogen#infect(installPath . "bundle")
+
+    " To disable a plugin, add it's bundle name to the following list
+    let g:pathogen_disabled = []
+
+    if v:version < 700 || (v:version == 700 && !has('patch167'))
+        call add(g:pathogen_disabled, 'tagbar')
+    endif
+    if v:version < 701 || (v:version == 701 && !has('patch040'))
+        call add(g:pathogen_disabled, 'syntastic')
+    endif
+
+    call pathogen#infect(installPath . 'bundle')
 endif
 
 "
