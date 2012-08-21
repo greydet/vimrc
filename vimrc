@@ -95,6 +95,7 @@ set formatoptions+=ro   " Automatically continue comment blocks on new line
 " Display configuration
 "
 
+syntax on               " Activate syntax highlighting
 set number              " Show line number
 "set nowrap              " Disable line wrapping
 "set list                " Show invisible characters
