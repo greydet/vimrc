@@ -100,6 +100,7 @@ set number              " Show line number
 "set nowrap              " Disable line wrapping
 "set list                " Show invisible characters
 set laststatus=2        " Always show file status bar
+set ruler               " Display information on the cursor position
 set showcmd             " Display some information about selections in visual mode
 if has('mouse')
     set mouse=a         " Enable mouse actions
