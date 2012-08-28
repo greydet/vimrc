@@ -197,6 +197,9 @@ let g:tagbar_autoshowtag = 1            " Highlight current selected tag in the 
 " Press <F8> to toggle the tagbar window
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
+let g:syntastic_check_on_open=1         " Syntastic check on open and saving
+let g:syntastic_auto_loc_list=1         " Automatically open the error window
+
 " Press <F3> to open the current symbol's declaration
 nnoremap <F3> <C-]>
 vnoremap <F3> <C-]>
@@ -213,33 +216,8 @@ endfunction
 if has('cscope')
     set cscopetag       " Use :cstag first instead of :tag
 
-"    if has('quickfix')
-"        set cscopequickfix=s-,c-,d-,i-,t-,e-
-"    endif
-
-"    let findCscopeResult = system(installPath . 'binsh/findUp.sh . -name cscope.out')
-    for cscopeFile in FindUp('.', 'cscope.out')
-        exe 'silent! cscope add ' . cscopeFile . ' ' . StripFileName(cscopeFile)
-    endfor
-
     nmap <C-S-g> :cscope find c <C-R>=expand("<cword>")<CR><CR>
 endif
-
-let g:syntastic_check_on_open=1         " Syntastic check on open and saving
-let g:syntastic_auto_loc_list=1         " Automatically open the error window
-
-" Construct the include dir by searching for h file from the project root
-" List of file name candidates used to find the project root
-let g:prjRootElts = ['.git', '.project']
-for candidate in g:prjRootElts
-    let foundCandidates = FindUp('.', candidate)
-    if len(foundCandidates) > 0
-        let rootCandidate = StripFileName(foundCandidates[-1])
-        let hDirs = system(g:installPath . 'binsh/findParentDir.sh ' . rootCandidate . ' -name *.h')
-        let g:syntastic_c_include_dirs = split(hDirs)
-        break
-    endif
-endfor
 
 "
 " Filetype specific configuration
