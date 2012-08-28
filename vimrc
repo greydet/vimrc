@@ -35,10 +35,7 @@ let customVimrcFilePath = expand("$HOME/.vimrc.custom")
 "
 
 " Add internal vim script folder in vim runtimepath
-" For this to work the repository must have been cloned in a vimrc folder in the user home directory
-if filereadable(installPath."vimrc")
-    let &runtimepath = &runtimepath . ',' . installPath . "vim/"
-endif
+let &runtimepath = &runtimepath . ',' . installPath
 
 set noswapfile                  " Do not create any swap file for openned files
 set wildmode=longest,list,full  " Configure wildmenu to behave as follow: complete the common part on first tab hit, list all candidates on second tab hit and iterate over them on next tab hits
