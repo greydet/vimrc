@@ -41,6 +41,10 @@ set noswapfile                  " Do not create any swap file for openned files
 set wildmode=longest,list,full  " Configure wildmenu to behave as follow: complete the common part on first tab hit, list all candidates on second tab hit and iterate over them on next tab hits
 set wildmenu                    " Enable wildmenu. Allow readline like completion when trying to edit new file
 filetype plugin on              " Load specific filetype plugin configuration
+if has('mouse')
+    set mouse=a         " Enable mouse actions
+endif
+set backspace=indent,eol,start  " Backspace behaves like in any other application
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
@@ -99,9 +103,7 @@ set number              " Show line number
 set laststatus=2        " Always show file status bar
 set ruler               " Display information on the cursor position
 set showcmd             " Display some information about selections in visual mode
-if has('mouse')
-    set mouse=a         " Enable mouse actions
-endif
+
 " Remap scroll down and page down so they does not fill the screen with non-existant file lines
 "map <ScrollWheelDown> n}
 "map <PageDown> }
