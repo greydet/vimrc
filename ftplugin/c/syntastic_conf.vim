@@ -21,9 +21,13 @@ for candidate in g:prjRootElts
     let foundCandidates = FindUp('.', candidate)
     if len(foundCandidates) > 0
         let rootCandidate = StripFileName(foundCandidates[-1])
-        let hDirs = system(g:installPath . 'binsh/findParentDir.sh -L ' . rootCandidate . ' -name "*.h"')
-        let g:syntastic_c_include_dirs = split(hDirs)
-        let g:syntastic_cpp_include_dirs = g:syntastic_c_include_dirs
+        let rootCandidate = system('readlink -f ' . rootCandidate . ' | tr -d "\r\n"')
+        if !exists('g:syntastic_inc_dir_rootPath') || rootCandidate != g:syntastic_inc_dir_rootPath
+            let g:syntastic_inc_dir_rootPath = rootCandidate
+            let hDirs = system(g:installPath . 'binsh/findParentDir.sh -L ' . rootCandidate . ' -name "*.h"')
+            let g:syntastic_c_include_dirs = split(hDirs)
+            let g:syntastic_cpp_include_dirs = g:syntastic_c_include_dirs
+        endif
         break
     endif
 endfor
