@@ -21,7 +21,7 @@ for candidate in g:prjRootElts
     let foundCandidates = FindUp('.', candidate)
     if len(foundCandidates) > 0
         let rootCandidate = StripFileName(foundCandidates[-1])
-        let hDirs = system(g:installPath . 'binsh/findParentDir.sh ' . rootCandidate . ' -name *.h')
+        let hDirs = system(g:installPath . 'binsh/findParentDir.sh ' . rootCandidate . ' -name "*.h"')
         let g:syntastic_c_include_dirs = split(hDirs)
         break
     endif

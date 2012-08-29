@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 
 #
 # Copyright (C) 2011-2012 Gonzague Reydet.
@@ -23,5 +23,5 @@
 
 set -e
 
-find $@ | sed 's#\(.*\)/.*#\1#' | sort -u
+find "$@" | sed 's#\(.*\)/.*#\1#' | sort -u
 
