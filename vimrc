@@ -206,15 +206,6 @@ let g:syntastic_auto_loc_list=1         " Automatically open the error window
 nnoremap <F3> <C-]>
 vnoremap <F3> <C-]>
 
-function! FindUp(path, pattern)
-    return split(system(g:installPath . 'binsh/findUp.sh ' . a:path . ' -name ' . a:pattern))
-endfunction
-
-function! StripFileName(path)
-    let l:lastPathSep = strridx(a:path, "/")
-    return strpart(a:path, 0, l:lastPathSep + 1)
-endfunction
-
 if has('cscope')
     set cscopetag       " Use :cstag first instead of :tag
 
