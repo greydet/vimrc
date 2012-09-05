@@ -14,10 +14,19 @@
 " limitations under the License.
 "
 
+" Wrapper function to help calling the findUp bash script
+" This script searches for files from the given path up to the filesystem root
+"
+" Param:
+"   - path: The path from which to start the search
+"   - pattern: The pattern of the searched files
+" Return:
+"   An array containing the found file paths
 function! FindUp(path, pattern)
     return split(system(g:installPath . 'binsh/findUp.sh ' . a:path . ' -name ' . a:pattern))
 endfunction
 
+" Remove the last segment (the file name) from the given path
 function! StripFileName(path)
     let l:lastPathSep = strridx(a:path, "/")
     return strpart(a:path, 0, l:lastPathSep + 1)
