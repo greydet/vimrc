@@ -31,3 +31,22 @@ function! StripFileName(path)
     let l:lastPathSep = strridx(a:path, "/")
     return strpart(a:path, 0, l:lastPathSep + 1)
 endfunction
+
+if !exists('g:prjRootCandidates')
+    " Default list of file name candidates used to find the project root
+    let g:prjRootCandidates = ['.project', '.git']
+endif
+
+" Try to find the project root from the current working directory by searching
+" in the parent directories for a file contained in the list of candidates
+" (defined by the 'g:prjRootCandidates' variable)
+function! FindProjectRoot()
+    for candidate in g:prjRootCandidates
+        let foundCandidates = FindUp('.', candidate)
+        if len(foundCandidates) > 0
+            let rootCandidate = StripFileName(foundCandidates[-1])
+            return system('readlink -f ' . rootCandidate . ' | tr -d "\r\n"')
+            break
+        endif
+    endfor
+endfunction
