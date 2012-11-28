@@ -199,8 +199,8 @@ let g:tagbar_autoshowtag = 1            " Highlight current selected tag in the 
 " Press <F8> to toggle the tagbar window
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
-let g:syntastic_check_on_open=1         " Syntastic check on open and saving
-let g:syntastic_auto_loc_list=1         " Automatically open the error window
+"let g:syntastic_check_on_open=1         " Syntastic check on open and saving
+"let g:syntastic_auto_loc_list=1         " Automatically open the error window
 
 " Press <F3> to open the current symbol's declaration
 nnoremap <F3> <C-]>

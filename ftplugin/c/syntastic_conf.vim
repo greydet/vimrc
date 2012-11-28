@@ -14,6 +14,10 @@
 " limitations under the License.
 "
 
+if !exists('g:syntastic_autofind_inc') || g:syntastic_autofind_inc == 0
+    finish
+endif
+
 " Construct the include dir by searching for h file from the project root
 let prjRoot = FindProjectRoot()
 if !exists('g:syntastic_inc_dir_rootPath') || prjRoot != g:syntastic_inc_dir_rootPath
