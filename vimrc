@@ -1,5 +1,5 @@
 "
-" Copyright (C) 2011-2012 Gonzague Reydet.
+" Copyright (C) 2011-2013 Gonzague Reydet.
 "
 " Licensed under the Apache License, Version 2.0 (the "License");
 " you may not use this file except in compliance with the License.
@@ -103,6 +103,14 @@ set number              " Show line number
 set laststatus=2        " Always show file status bar
 set ruler               " Display information on the cursor position
 set showcmd             " Display some information about selections in visual mode
+
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
 
 " Remap scroll down and page down so they does not fill the screen with non-existant file lines
 "map <ScrollWheelDown> n}
