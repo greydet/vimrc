@@ -72,6 +72,8 @@ nnoremap <S-F12> :bprevious<CR>
 nnoremap <C-F12> :sbnext<CR>
 " Press <C-S-F12> to open a new window on the previous buffer
 nnoremap <C-S-F12> :sbprevious<CR>
+" Press <C-F4> to close current buffer
+nnoremap <C-F4> :bdelete<CR>
 
 "
 " Indentation configuration
@@ -110,6 +112,8 @@ if &term =~ '^screen'
     execute "set <xDown>=\e[1;*B"
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
+    execute "set <xF4>=\e[1;*S"
+    execute "set <F12>=\e[24;*~"
 endif
 
 " Remap scroll down and page down so they does not fill the screen with non-existant file lines
