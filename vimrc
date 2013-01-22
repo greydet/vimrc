@@ -105,6 +105,7 @@ set number              " Show line number
 set laststatus=2        " Always show file status bar
 set ruler               " Display information on the cursor position
 set showcmd             " Display some information about selections in visual mode
+set rulerformat=%20(%l/%L,%c%V%=%p%%%)
 
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
