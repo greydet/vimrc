@@ -203,6 +203,11 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
+" DelimitMate configurations
+let delimitMate_expand_cr = 1           " Enable expansion of <CR>
+let delimitMate_expand_space = 1        " Enable expansion of <Space>
+let delimitMate_balance_matchpairs = 1  " Enable match pair balancing
+
 " Tagbar plugin configurations
 let g:tagbar_autofocus = 1              " Set focus to the tagbar window when opening
 let g:tagbar_compact = 1                " Make tagbar window compact display
