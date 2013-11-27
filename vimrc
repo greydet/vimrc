@@ -143,6 +143,8 @@ nnoremap <cr> :noh<return><cr>
 " Press <F7> to turn on/off spell checking 
 nnoremap <F7> :setlocal spell! spelllang=en_us<cr>
 inoremap <F7> <c-o>:setlocal spell! spelllang=en_us<cr>
+" Press <Ctrl+f> to search/replace the current visual selection
+vnoremap <C-f> hy:%s/<C-r>h//gc<left><left><left>
 
 "
 " Plugin configuration
