@@ -116,6 +116,11 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
     execute "set <xF4>=\e[1;*S"
     execute "set <F12>=\e[24;*~"
+    execute "set <kPlus>=\eOk"
+    execute "set <kMinus>=\eOm"
+    execute "set <kDivide>=\eOo"
+    execute "set <kMultiply>=\eOj"
+    execute "set <kEnter>=\eOM"
 endif
 
 " Remap scroll down and page down so they does not fill the screen with non-existant file lines
