@@ -47,9 +47,13 @@ endif
 set backspace=indent,eol,start  " Backspace behaves like in any other application
 set clipboard+=unnamedplus      " Use the system clipboard (+ register) when copy/pasting using the default 'y' & 'p' commands
 " Remap yank to use the system clipboard (+ register)
-noremap y "+y
+vnoremap y "+y
+nnoremap y "+yy
 " Remap paste to use the system clipboard (+ register)
-noremap p "+p
+nnoremap p "+p
+" Remap delete to delete whole line to system clipboard (+ register)
+vnoremap d "+d
+nnoremap d "+dd
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
