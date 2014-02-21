@@ -45,7 +45,11 @@ if has('mouse')
     set mouse=a         " Enable mouse actions
 endif
 set backspace=indent,eol,start  " Backspace behaves like in any other application
-set clipboard+=unnamedplus      " Use the system clipboard when copy/pasting using the default 'y' & 'p' commands
+set clipboard+=unnamedplus      " Use the system clipboard (+ register) when copy/pasting using the default 'y' & 'p' commands
+" Remap yank to use the system clipboard (+ register)
+noremap y "+y
+" Remap paste to use the system clipboard (+ register)
+noremap p "+p
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
