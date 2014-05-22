@@ -19,3 +19,6 @@
 [submodule "bundle/IndexedSearch"]
 	path = bundle/IndexedSearch
 	url = https://github.com/jfelchner/IndexedSearch.git
+[submodule "bundle/bbye"]
+	path = bundle/bbye
+	url = https://github.com/moll/vim-bbye.git
